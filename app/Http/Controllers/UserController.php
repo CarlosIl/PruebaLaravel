@@ -6,17 +6,26 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // return 'Usuarios';
 
-        $users = [
-            'Joel',
-            'Ellie',
-            'Tess',
-            'Tommy',
-            'Bill',
-            '<script>alert("Clicker")</script>'
-        ];
+        if (request()->has('empty')) {
+            $users = [];
+        } else {
+            $users = [
+                'Joel','Ellie','Tess','Tommy','Bill'
+            ];
+        }
+
+        // $users = [
+        //     'Joel',
+        //     'Ellie',
+        //     'Tess',
+        //     'Tommy',
+        //     'Bill',
+        //     '<script>alert("Clicker")</script>'
+        // ];
 
         // return view('users', [
         //     'users' => $users,
@@ -35,7 +44,10 @@ class UserController extends Controller
         return view('users', compact('title', 'users'));
     }
 
-    public function show($id){
-        return "Mosatrando detalle del usuario: {$id}";
+    public function show($id)
+    {
+        return view('users-show', compact('id'));
+
+        // return "Mostrando detalle del usuario: {$id}";
     }
 }

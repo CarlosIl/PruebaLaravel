@@ -31,12 +31,12 @@ Route::get('/', function () {
 Route::get('/usuarios', [UserController::class, 'index']);
 
 
-Route::get('/usuarios/{id}', function ($id) {
-    return 'Mostrando detalles del usuario: '.$id;
-})->where('id','[0-9]+');
+// Route::get('/usuarios/{id}', function ($id) {
+//     return 'Mostrando detalles del usuario: '.$id;
+// })->where('id','[0-9]+');
 
-// Route::get('/usuarios/{id}', 'UserController@show')
-//     ->where('id','[0-9]+');
+Route::get('/usuarios/{id}', [UserController::class, 'show'])
+    ->where('id','[0-9]+');
 
 Route::get('/usuarios/nuevo', function () {
     return 'Crear nuevo usuario';
